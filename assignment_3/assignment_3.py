@@ -7,8 +7,8 @@ def sobel_edge_function(image):
     if img is None:
         print("Could not load image.")
         exit(1)
-
-    gaussian = cv.GaussianBlur(img, (3, 3), 0)
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    gaussian = cv.GaussianBlur(gray, (3, 3), 0)
     sobel = cv.Sobel(src=gaussian, ddepth=cv.CV_64F, dx=1, dy=1, ksize=1)
 
     cv.imshow('sobel', sobel)
@@ -22,7 +22,8 @@ def canny_edge_detection(image, threshold_1, threshold_2):
         print("Could not load image.")
         exit(1)
 
-    gaussian = cv.GaussianBlur(img, (3, 3), 0)
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    gaussian = cv.GaussianBlur(gray, (3, 3), 0)
     edges = cv.Canny(gaussian, threshold_1, threshold_2)
 
     cv.imshow('canny_edge_detection', edges)
@@ -78,7 +79,7 @@ def resize(image, scale_factor:int, up_or_down:str):
 
 if __name__ == '__main__':
     sobel_edge_function('lambo.png')
-    canny_edge_detection('lambo.png', 100, 100)
+    canny_edge_detection('lambo.png', 50, 50)
     template_match('shapes-1.png', 'shapes_template.jpg')
 
     zoom = str(input("Enter 'up' for zooming in and 'down' for zooming out: "))
