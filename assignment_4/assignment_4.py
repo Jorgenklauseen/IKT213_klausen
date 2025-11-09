@@ -22,8 +22,8 @@ def harris_corner(reference_image):
 
 
 def sift(image_to_align, reference_image, max_features, good_match_precent):
-    img1 = cv.imread(reference_image, cv.IMREAD_GRAYSCALE)
-    img2 = cv.imread(image_to_align, cv.IMREAD_GRAYSCALE)
+    img1 = cv.imread(image_to_align, cv.IMREAD_GRAYSCALE)
+    img2 = cv.imread(reference_image, cv.IMREAD_GRAYSCALE)
 
     if img1 is None or img2 is None:
         print("Could not open image(s)")
